@@ -1,16 +1,15 @@
 <h1 align="center">NOTFLIX</h1>
-<p align="center">f@#k netflix use notflix a tool which search magnet links and stream it with peerflix</p>
+<p align="center">f@#k netflix use Dmenu-Streaming a tool which search magnet links and stream it with peerflix</p>
 
 ##
 <p align="center">
 <img src="./preview.gif" alt="Video Preview" width="500px">
 </p>
 
-> Watch this video to understand - [bugswriter's notflix](https://youtu.be/FbE19_omaWY)
 
 ### How does this work?
 
-This is a shell script. It scape 1337x and get the magnet link.
+This is a shell script using dmenu to search 1337x movies and get the magnet link.
 After this it use [peerflix](https://github.com/mafintosh/peerflix) to stream the video from magnet link.
 For scraping script use simple gnu utils like sed, awk, paste, cut.
 
@@ -21,7 +20,7 @@ For scraping script use simple gnu utils like sed, awk, paste, cut.
 ## Installation
 
 ### cURL
-cURL **notflix** to your **$PATH** and give execute permissions.
+cURL **Dmenu-Streaming** to your **$PATH** and give execute permissions.
 
 ```sh
 $ sudo curl -sL "https://raw.githubusercontent.com/Bugswriter/notflix/master/notflix" -o /usr/local/bin/notflix
