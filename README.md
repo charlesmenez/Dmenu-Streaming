@@ -1,5 +1,6 @@
 <h1 align="center">NOTFLIX</h1>
 <p align="center">f@#k netflix use Dmenu-Streaming a tool which search magnet links and stream it with peerflix</p>
+<p align="center">Fork of <a href=https://github.com/Bugswriter/notflix>Notflix<a/></p>
 
 ##
 <p align="center">
@@ -23,11 +24,11 @@ For scraping script use simple gnu utils like sed, awk, paste, cut.
 cURL **Dmenu-Streaming** to your **$PATH** and give execute permissions.
 
 ```sh
-$ sudo curl -sL "https://raw.githubusercontent.com/Bugswriter/notflix/master/notflix" -o /usr/local/bin/notflix
-$ sudo chmod +x /usr/local/bin/notflix
+$ sudo curl -sL "https://raw.githubusercontent.com/charlesmenez/Dmenu-Streaming/master/Dmenu-Streaming" -o /usr/local/bin/notflix
+$ sudo chmod +x /usr/local/bin/Dmenu-Streaming
 ```
 - To update, just do `curl` again, no need to `chmod` anymore.
-- To uninstall, simply remove `notflix` from your **$PATH**, for example `sudo rm -f /usr/local/bin/notflix.
+- To uninstall, simply remove `notflix` from your **$PATH**, for example `sudo rm -f /usr/local/bin/Dmenu-Streaming.
 
 ## License
 This project is licensed under [GPL-3.0](https://raw.githubusercontent.com/Illumina/licenses/master/gpl-3.0.txt).
