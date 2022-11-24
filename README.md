@@ -24,11 +24,11 @@ For scraping script use simple gnu utils like sed, awk, paste, cut.
 cURL **Dmenu-Streaming** to your **$PATH** and give execute permissions.
 
 ```sh
-$ sudo curl -sL "https://raw.githubusercontent.com/charlesmenez/Dmenu-Streaming/master/Dmenu-Streaming" -o /usr/local/bin/notflix
+$ sudo curl -sL "https://raw.githubusercontent.com/charlesmenez/Dmenu-Streaming/master/Dmenu-Streaming" -o /usr/local/bin/Dmenu-Streaming
 $ sudo chmod +x /usr/local/bin/Dmenu-Streaming
 ```
 - To update, just do `curl` again, no need to `chmod` anymore.
-- To uninstall, simply remove `notflix` from your **$PATH**, for example `sudo rm -f /usr/local/bin/Dmenu-Streaming.
+- To uninstall, simply remove `Dmenu-Streaming` from your **$PATH**, for example `sudo rm -f /usr/local/bin/Dmenu-Streaming.
 
 ## License
 This project is licensed under [GPL-3.0](https://raw.githubusercontent.com/Illumina/licenses/master/gpl-3.0.txt).
