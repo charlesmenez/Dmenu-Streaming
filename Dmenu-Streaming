@@ -3,7 +3,7 @@
 #set dmenu theme
 DMENU_CMD="dmenu -fn monospace:size=9 -nb black -sb white -sf black"
 #input a movie variable
-search=$(echo | $DMENU_CMD -p "Search a movie")
+search=$($DMENU_CMD -p "Search a movie" < /dev/null)
 
 #if statement to see if search variable is NULL
 if [ -z "$search" ]; then
