@@ -1,24 +1,38 @@
 #!/bin/sh
 
 #set dmenu theme
-DMENU_CMD="dmenu -fn monospace:size=8 -nb black -sb white -sf black"
+DMENU_CMD="dmenu -i"
 #input a movie variable
 search=$($DMENU_CMD -p "Search a movie" < /dev/null)
-
+site=$(printf "RARBG\n1337X" | dmenu -p "Which Site: ")
+query=$(printf "$search" | tr ' ' '+' )
 #if statement to see if search variable is NULL
 if [ -z "$search" ]; then
   exit 0
+elif [ $site == "RARBG" ]; then
+  site="https://www1.rarbggo.to/search/?search=$query"
+  magnet="https://www1.rarbggo.to/"
+elif [ $site == "1337X" ]; then
+  site="https://1337x.to/search/$query/1/"
+  magnet="https://1337x.to/"
 fi
 
 # change the search variable spaces with +
-query=$(printf "$search" | tr ' ' '+' )
 # search the movie on 1337x and send output to dmenu prompt
-movie=$(curl -s https://1337x.to/search/$query/1/ | grep -Eo "torrent\/[0-9]{1,9}\/[a-zA-Z0-9?%-]*/" | $DMENU_CMD -i -l 20 -p 'which movie?')
-magnetlink=$(curl -s https://1337x.to/$movie | grep -Po "magnet:\?xt=urn:btih:[a-zA-Z0-9]*" | head -n 1)
+movie=$(curl -s $site | grep -o 'torrent/[^"]*' | $DMENU_CMD -i -l 20 -p 'which movie?')
+magnetlink=$( curl -s $magnet$movie | grep -Po 'magnet:[^"]*' | head -n 1)
 
 #if statement to see if magnetlink variable is NULL
-if [ -z "$magnetlink"]; then
-  exit 0
-fi
 
-alacritty -e peerflix $magnetlink -l -k --path ~/MassStorage/Movies
+if [ -z "$magnetlink" ]; then
+  exit 0
+elif [ -n "$magnetlink" ]; then
+  choices=$(printf "Watch\nDownload" | dmenu -p 'What to do? ')
+  if [ $choices == "Watch" ]; then
+    st -e webtorrent "$magnetlink" --mpv --no-quit
+  else
+    format=$(printf "$query" | tr '+' ' ') 
+    transmission-remote -a "$magnetlink" -w ~/
+    notify-send "$format adicionado para download"
+  fi
+fi
