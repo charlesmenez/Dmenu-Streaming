@@ -1,5 +1,5 @@
 <h1 align="center">Dmenu-Streaming</h1>
-<p align="center">f@#k netflix use Dmenu-Streaming a tool which search magnet links and stream it with peerflix</p>
+<p align="center">f@#k netflix use Dmenu-Streaming a tool which search magnet links and stream it with webtorrent-cli</p>
 <p align="center">Fork of <a href=https://github.com/Bugswriter/notflix>Notflix<a/></p>
 
 
