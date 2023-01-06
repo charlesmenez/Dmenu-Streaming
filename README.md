@@ -2,21 +2,16 @@
 <p align="center">f@#k netflix use Dmenu-Streaming a tool which search magnet links and stream it with peerflix</p>
 <p align="center">Fork of <a href=https://github.com/Bugswriter/notflix>Notflix<a/></p>
 
-##
-<p align="center">
-<img src="./preview.gif" alt="Video Preview" width="500px">
-</p>
-
 
 ### How does this work?
 
-This is a shell script using dmenu to search 1337x movies and get the magnet link.
-After this it use [peerflix](https://github.com/mafintosh/peerflix) to stream the video from magnet link.
+This is a shell script using dmenu to search 1337x/RARBG movies and get the magnet link.
+After this it use [webtorrent-cli](https://github.com/webtorrent/webtorrent-cli) to stream the video from magnet link.
 For scraping script use simple gnu utils like sed, awk, paste, cut.
 
 ## Requirements
 
-* [peerflix](https://github.com/mafintosh/peerflix) - A tool to stream torrent. `sudo npm install peerflix -g`
+* [webtorrent-cli](https://github.com/webtorrent/webtorrent-cli) - A tool to stream torrent. `npm install webtorrent-cli -g`
 
 ## Installation
 
