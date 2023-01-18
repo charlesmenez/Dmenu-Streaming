@@ -1,25 +1,17 @@
 #!/bin/sh
 
-#set dmenu theme
-DMENU_CMD="dmenu -i"
 #input a movie variable
-search=$($DMENU_CMD -p "Search a movie" < /dev/null)
-site=$(printf "RARBG\n1337X" | dmenu -p "Which Site: ")
+search=$(dmenu -i -p "Search a movie" < /dev/null)
+# change the search variable spaces with +
 query=$(printf "$search" | tr ' ' '+' )
 #if statement to see if search variable is NULL
 if [ -z "$search" ]; then
   exit 0
-elif [ $site == "RARBG" ]; then
-  site="https://www1.rarbggo.to/search/?search=$query"
-  magnet="https://www1.rarbggo.to/"
-elif [ $site == "1337X" ]; then
-  site="https://1337x.to/search/$query/1/"
-  magnet="https://1337x.to/"
 fi
-
-# change the search variable spaces with +
+site="https://1337x.to/search/$query/1/"
+magnet="https://1337x.to/"
 # search the movie on 1337x and send output to dmenu prompt
-movie=$(curl -s $site | grep -o 'torrent/[^"]*' | $DMENU_CMD -i -l 20 -p 'which movie?')
+movie=$(curl -s $site | grep -o 'torrent/[^"]*' | dmenu -i -l 20 -p 'which movie?')
 magnetlink=$( curl -s $magnet$movie | grep -Po 'magnet:[^"]*' | head -n 1)
 
 #if statement to see if magnetlink variable is NULL
@@ -27,7 +19,7 @@ magnetlink=$( curl -s $magnet$movie | grep -Po 'magnet:[^"]*' | head -n 1)
 if [ -z "$magnetlink" ]; then
   exit 0
 elif [ -n "$magnetlink" ]; then
-  choices=$(printf "Watch\nDownload" | dmenu -p 'What to do? ')
+  choices=$(printf "Watch\nDownload" | dmenu -i -p 'What to do? ')
   if [ $choices == "Watch" ]; then
     st -e webtorrent "$magnetlink" --mpv --no-quit
   else
